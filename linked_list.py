@@ -3,6 +3,7 @@ class Element:
         self.value = value
         self.next = None
         self.root = False
+        # would it be an idea to store the position for each element
 
 
 class LinkedList:
@@ -13,14 +14,11 @@ class LinkedList:
     def append(self, add_value):
         """adds a new link to the end of the linked list, takes a value
         parameter named add_value"""
-
-        if self.root_element.next == None:
-            self.root_element.next = Element(add_value)
-        else:
-            current = self.root_element.next
-            while current.next != None:
-                current = current.next
-            current.next = Element(add_value)
+        import pdb; pdb.set_trace()
+        current = self.root_element
+        while current.next:
+            current = current.next
+        current.next = Element(add_value)
 
     def get_position(self, position):
         if position == 1:
@@ -40,3 +38,5 @@ class LinkedList:
 
     def delete(self, value):
         pass
+
+    # should have a str function that displays the values in the list
