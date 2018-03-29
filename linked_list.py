@@ -14,24 +14,27 @@ class LinkedList:
     def append(self, add_value):
         """adds a new link to the end of the linked list, takes a value
         parameter named add_value"""
-        import pdb; pdb.set_trace()
+
         current = self.root_element
         while current.next:
             current = current.next
         current.next = Element(add_value)
 
     def get_position(self, position):
-        if position == 1:
-            return self.root_element
-        else:
-            current = self.root_element
-            for i in range(position - 1):
-                try:
+        if isinstance(position, int):
+            if position >= 1:
+                current = self.root_element
+                for i in range(0, position - 1):
                     current = current.next
-                except AttributeError:
-                    return None
-                else:
-                    return current
+                    if current is None:
+                        return None
+                return current 
+            else:
+                raise ValueError(
+                    "position must be an integer greater than zero"
+                )
+        else:
+            raise TypeError("position must be an integer")
 
     def insert(self, new_element, position):
         pass
