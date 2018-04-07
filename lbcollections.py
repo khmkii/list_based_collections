@@ -4,6 +4,8 @@ class Element:
         self.next = None
         self.root = False
 
+    def __str__(self):
+        return "Linked List Element Value: {}".format(self.value)
 
 class LinkedList:
     def __init__(self, initial_value=None):
