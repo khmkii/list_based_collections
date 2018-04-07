@@ -5,7 +5,7 @@ class Element:
         self.root = False
 
     def __str__(self):
-        return "Linked List Element Value: {}".format(self.value)
+        return self.value
 
 class LinkedList:
     def __init__(self, initial_value=None):
@@ -17,13 +17,17 @@ class LinkedList:
         adds a new link to the end of the linked list, takes a value
         parameter named add_value
         """
-
         current = self.root_element
         while current.next:
             current = current.next
         current.next = Element(add_value)
 
     def get_position(self, position):
+        """
+        Get an element from a particular position.
+        Assume the first position is "1".
+        Return "None" if position is not in the list.
+        """
         if isinstance(position, int):
             if position >= 1:
                 current = self.root_element
@@ -64,4 +68,25 @@ class LinkedList:
                     )
 
     def delete(self, value):
-        pass
+        """
+        Delete the first node with a given value.
+        """
+        if self.root_element.value == value:
+            self.root_element = self.root_element.next
+            self.root_element.root = True
+        else:
+            position = 2
+            next_element = self.root_element.next
+            while next_element:
+                if next_element.value == value:
+                    prior_element = self.get_position(position - 1)
+                    after_element = self.get_position(position + 1)
+                    prior_element.next = after_element
+                    next_element.next = None
+                else:
+                    position += 1
+                    continue
+
+
+
+    # leverage del to remove position at index? or delete_at_position
