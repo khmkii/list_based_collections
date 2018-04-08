@@ -52,9 +52,11 @@ class LinkedList:
         """
 
         if position == 1:
-            self.root_element.root = False
+            old_root_element = self.root_element
+            old_root_element.root = False
             self.root_element = Element(new_element_value)
             self.root_element.root = True
+            self.root_element.next = old_root_element
         else:
             posterior = self.get_position(position)
             if posterior is not None:
@@ -64,8 +66,8 @@ class LinkedList:
                 prior.next = new_element
             else:
                 raise IndexError(
-                        "cannot insert outside of the linked list, try append instead"
-                    )
+                    "cannot insert outside of the linked list, try append instead"
+                )
 
     def delete(self, value):
         """
@@ -86,7 +88,3 @@ class LinkedList:
                 else:
                     position += 1
                     continue
-
-
-
-    # leverage del to remove position at index? or delete_at_position
