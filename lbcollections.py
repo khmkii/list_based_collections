@@ -91,6 +91,7 @@ class LinkedList:
                     next_element = next_element.next
                     continue
 
+
 class Stack:
     def __init__(self, top=None):
         self.il = LinkedList(top)
@@ -99,10 +100,11 @@ class Stack:
         """
         Push (add) a new element onto the top of the stack
         """
-        pass
+        self.il.insert(new_element, 1)
 
     def pop(self):
         """
         Pop (remove) the first element off the top of the stack and return it
         """
-        pass
+        first = self.il.root_element.value
+        self.il.delete(first)
