@@ -108,3 +108,4 @@ class Stack:
         """
         first = self.il.root_element.value
         self.il.delete(first)
+        return first

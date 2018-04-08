@@ -1,6 +1,6 @@
 import unittest
 
-from lbcollections import LinkedList
+from lbcollections import LinkedList, Stack
 
 
 class LinkedListTests(unittest.TestCase):
@@ -115,6 +115,21 @@ class LinkedListTests(unittest.TestCase):
         self.assertTrue(
             self.listy.root_element.root
         )
+
+class StackTests(unittest.TestCase):
+
+    def setUp(self):
+        self.stacky = Stack(top=1)
+
+    def tearDown(self):
+        del self.stacky
+
+    def test_stack_push_and_pop(self):
+        self.stacky.push(2)
+        self.stacky.push(3)
+        self.assertEqual(self.stacky.pop(), 3)
+        self.assertEqual(self.stacky.pop(), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
