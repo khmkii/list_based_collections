@@ -85,6 +85,8 @@ class LinkedList:
                     after_element = self.get_position(position + 1)
                     prior_element.next = after_element
                     next_element.next = None
+                    break
                 else:
                     position += 1
+                    next_element = next_element.next
                     continue
